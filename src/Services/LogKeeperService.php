@@ -1,7 +1,6 @@
 <?php namespace MathiasGrimm\LaravelLogKeeper\Services;
 
 use Exception;
-use MathiasGrimm\LaravelLogKeeper\Repos\LocalLogsRepoInterface;
 use MathiasGrimm\LaravelLogKeeper\Repos\LogsRepoInterface;
 use Carbon\Carbon;
 use MathiasGrimm\LaravelLogKeeper\Support\LogUtil;
@@ -67,37 +66,49 @@ class LogKeeperService
 
     private function log($msg)
     {
-        $this->command->line($msg);
+        if($this->command!==null) {
+            $this->command->line($msg);
+        }
         $this->logger->info($msg);
     }
 
     private function logWarning($msg)
     {
-        $this->command->question($msg);
+        if($this->command!==null) {
+            $this->command->question($msg);
+        }
         $this->logger->warning($msg);
     }
 
     private function logComment($msg)
     {
-        $this->command->comment($msg);
+        if($this->command!==null){
+            $this->command->comment($msg);
+        }
         $this->logger->info($msg);
     }
 
     private function logSuccess($msg)
     {
-        $this->command->info($msg);
+        if($this->command!==null) {
+            $this->command->info($msg);
+        }
         $this->logger->info($msg);
     }
 
     private function logError($msg)
     {
-        $this->command->error($msg);
+        if($this->command!==null) {
+            $this->command->error($msg);
+        }
         $this->logger->error($msg);
     }
 
     private function logRed($msg)
     {
-        $this->command->error($msg);
+        if($this->command!==null) {
+            $this->command->error($msg);
+        }
         $this->logger->info($msg);
     }
 
