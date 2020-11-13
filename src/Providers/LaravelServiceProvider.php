@@ -2,12 +2,17 @@
 
 use Exception;
 use Illuminate\Support\ServiceProvider as Provider;
+use MathiasGrimm\LaravelLogKeeper\Commands\LogKeeper;
 
 class LaravelServiceProvider extends Provider
 {
     public function boot()
     {
-        // 
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                LogKeeper::class,
+            ]);
+        }
     }
 
     /**
@@ -23,7 +28,5 @@ class LaravelServiceProvider extends Provider
         $this->app->singleton('command.laravel-log-keeper', function ($app) {
             return $app['MathiasGrimm\LaravelLogKeeper\Commands\LogKeeper'];
         });
-
-        $this->commands('command.laravel-log-keeper');
     }
 }
