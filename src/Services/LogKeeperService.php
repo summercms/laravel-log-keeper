@@ -64,7 +64,7 @@ class LogKeeperService
         $this->logger                           = $logger;
     }
 
-    private function log($msg)
+    public function log($msg)
     {
         if($this->command!==null) {
             $this->command->line($msg);
@@ -72,7 +72,7 @@ class LogKeeperService
         $this->logger->info($msg);
     }
 
-    private function logWarning($msg)
+    public function logWarning($msg)
     {
         if($this->command!==null) {
             $this->command->question($msg);
@@ -80,7 +80,7 @@ class LogKeeperService
         $this->logger->warning($msg);
     }
 
-    private function logComment($msg)
+    public function logComment($msg)
     {
         if($this->command!==null){
             $this->command->comment($msg);
@@ -88,7 +88,7 @@ class LogKeeperService
         $this->logger->info($msg);
     }
 
-    private function logSuccess($msg)
+    public function logSuccess($msg)
     {
         if($this->command!==null) {
             $this->command->info($msg);
@@ -96,7 +96,7 @@ class LogKeeperService
         $this->logger->info($msg);
     }
 
-    private function logError($msg)
+    public function logError($msg)
     {
         if($this->command!==null) {
             $this->command->error($msg);
@@ -104,7 +104,7 @@ class LogKeeperService
         $this->logger->error($msg);
     }
 
-    private function logRed($msg)
+    public function logRed($msg)
     {
         if($this->command!==null) {
             $this->command->error($msg);
